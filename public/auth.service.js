@@ -15,7 +15,8 @@
           getUserStatus: getUserStatus,
           login: login,
           logout: logout,
-          register: register
+          register: register,
+          resetPassword: resetPassword
         });
 
 
@@ -104,8 +105,25 @@
 
           return deferred.promise;
         }
+
+        function resetPassword(email) {
+          var deffered = $q.defer();
+
+          $http.post('/user/resetPassword', { email })
+            .success(function (data, status) {
+              if(status === 200 && data.status) {
+                deferred.resolve();
+              } else {
+                deffered.reject(data.status);
+              }
+            })
+            .error(function(err) {
+              deffered.reject(err);
+            });
+
+            return deffered.promise;
+        }// #resetPassword
+
     }// #AuthService
-
-
 
 }());
