@@ -29,9 +29,11 @@ configure.$inject = ['$routeProvider'];
       controllerAs: 'vm',
       access: {restricted: false}
     })
-    .when('/one', {
-      template: '<h1>This is page one!<\h1>',
-      access: {restricted: true}
+    .when('/reset', {
+      templateUrl: '/partials/reset.html',
+      controller: 'resetController',
+      controllerAs: 'vm',
+      access: {restricted: false}
     })
     .when('/two', {
       template: '<h1>This is page two!<\h1>',
